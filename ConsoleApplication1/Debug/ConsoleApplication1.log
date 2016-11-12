@@ -1,0 +1,16 @@
+﻿  소스.cpp
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(26): warning C4838: '__int64'에서 'int'(으)로의 변환에는 축소 변환이 필요합니다.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(26): warning C4305: '초기화 중': '__int64'에서 'int'(으)로 잘립니다.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(26): warning C4309: '초기화 중': 상수 값이 잘립니다.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(73): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(91): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(101): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: 'strcpy' 선언을 참조하십시오.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(116): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\consoleapplication1\소스.cpp(144): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  ConsoleApplication1.vcxproj -> C:\Users\ghj52\OneDrive\Documents\Visual Studio 2015\Projects\C-Programming_Sungwon\Debug\ConsoleApplication1.exe
+  ConsoleApplication1.vcxproj -> C:\Users\ghj52\OneDrive\Documents\Visual Studio 2015\Projects\C-Programming_Sungwon\Debug\ConsoleApplication1.pdb (Full PDB)

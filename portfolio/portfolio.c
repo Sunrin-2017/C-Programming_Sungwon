@@ -1,6 +1,11 @@
 #include <stdio.h>
+#include<string.h>
 #include<Windows.h>
 #include"Cards.h"
+void search(){
+	char input[50];
+	scanf("%s", input);
+}
 int main() {
 	struct card data[1000];
 	FILE *f;
@@ -14,9 +19,10 @@ int main() {
 		printf("인벤과 같이 카드의 대한 상세정보를 가지고 있는 홈페이지와 같이 사용해주세요.\n\n");
 		printf("1. 나만의 덱 만들기\n");
 		printf("2. 나만의 덱 보기\n");
-		printf("3. 카드별 옵션 확인해 보기\n");
+		printf("3. 카드 검색\n :");
 		scanf("%d", &i);
 		switch (i) {
+		     
 		}
 		system("cls");
 	}
