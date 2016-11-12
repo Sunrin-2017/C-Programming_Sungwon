@@ -1,11 +1,11 @@
-﻿  portfolio.c
-c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\portfolio\portfolio.c(7): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
-c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\portfolio\portfolio.c(12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  portfolio.cpp
+c:\users\sunset\desktop\sunrin\c-programming_sungwon\portfolio\portfolio.cpp(10): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: 'fopen' 선언을 참조하십시오.
-c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\portfolio\portfolio.c(14): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sunset\desktop\sunrin\c-programming_sungwon\portfolio\portfolio.cpp(12): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1193): note: 'fscanf' 선언을 참조하십시오.
-c:\users\ghj52\onedrive\documents\visual studio 2015\projects\c-programming_sungwon\portfolio\portfolio.c(23): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\sunset\desktop\sunrin\c-programming_sungwon\portfolio\portfolio.cpp(22): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
-  portfolio.vcxproj -> C:\Users\ghj52\OneDrive\Documents\Visual Studio 2015\Projects\C-Programming_Sungwon\Debug\portfolio.exe
-  portfolio.vcxproj -> C:\Users\ghj52\OneDrive\Documents\Visual Studio 2015\Projects\C-Programming_Sungwon\Debug\portfolio.pdb (Full PDB)
+c:\users\sunset\desktop\sunrin\c-programming_sungwon\portfolio\portfolio.cpp(48): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: 'scanf' 선언을 참조하십시오.
+  portfolio.vcxproj -> C:\Users\SunSet\Desktop\Sunrin\C-Programming_Sungwon\Debug\portfolio.exe
+  portfolio.vcxproj -> C:\Users\SunSet\Desktop\Sunrin\C-Programming_Sungwon\Debug\portfolio.pdb (Full PDB)
