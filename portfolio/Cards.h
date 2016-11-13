@@ -5,4 +5,5 @@ struct card {
 	char grade[50];
 	char tribe[50];
 	char category[50];
+	char spell[50];
 };
