@@ -44,7 +44,7 @@ void mydeck() {
 		return;
 	}
 	while (p != tail) {
-		printf("%d. 이름 : %s   코스트 : %d   카드팩,모험 : %s   직업 : %s   등급 : %s   종류 : %s\n",i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
+		printf("%d. 이름 : %s   코스트 : %d   카드팩,모험 : %s   직업 : %s   등급 : %s   종류 : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
 		p = p->Next;
 		i++;
 	}
@@ -68,6 +68,36 @@ void makemydeckprint() {
 		i++;
 	}
 	printf("\n");
+}
+
+void removedeck() {
+	system("cls");
+	char input[50];
+	int select;
+	printf("1. 카드 선택삭제\n2. 카드 모두 삭제\n:");
+	scanf("%d", &select);
+	if (select == 1) {
+		printf("나만의 덱에서 삭제하고 싶은 카드의 이름을 입력하세요 : ");
+		scanf("%s", input);
+		node *p = head->Next;
+		node *o = head;
+		while (p != tail) {
+			if (strcmp(p->name, input) == 0) {
+				node*s = p->Next;
+				free(p);
+				o->Next = s;
+				break;
+			}
+			p = p->Next;
+			o = o->Next;
+		}
+	}
+	else if (select == 2) {
+		reset();
+	}
+	else {
+		printf("선택한 옵션은 존재하지 않습니다. 다시입력해주세요.");
+	}
 }
 
 void makemydeck() {
@@ -141,14 +171,16 @@ int main() {
 		printf("인벤과 같이 카드의 대한 상세정보를 가지고 있는 홈페이지와 같이 사용해주세요.\n\n");
 		printf("1. 나만의 덱 만들기\n");
 		printf("2. 나만의 덱 보기\n");
-		printf("3. 카드 검색\n");
-		printf("4. 종료\n:");
+		printf("3. 나만의 덱 삭제\n");
+		printf("4. 카드 검색\n");
+		printf("5. 종료\n:");
 		scanf("%d", &i);
 		switch (i) {
 		case 1:makemydeck(); break;
 		case 2:mydeck(); break;
-		case 3:search(); break;
-		case 4:return 0;
+		case 3:removedeck(); break;
+		case 4:search(); break;
+		case 5:return 0;
 		}
 		system("cls");
 	}
