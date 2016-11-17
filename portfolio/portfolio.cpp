@@ -2,8 +2,6 @@
 #include<string.h>
 #include<Windows.h>
 #include"Cards.h"
-//ƒ´µÂªË¡¶±‚¥… ª¿‘
-//≥ª∞° ∏∏µÁµ¶ txt∆ƒ¿œ∑Œ ¿˙¿Â«ÿ∫∏±‚
 typedef struct LinkedList { //typedef는 별명을 선언해 주기위해 사용
 	char name[50];
 	int cost;
@@ -168,13 +166,13 @@ int main() {
 	file();
 	while (1) {
 		int i = 0;
-		printf("<<<< == «œΩ∫Ω∫≈Ê ≥™∏∏¿« µ¶ ∏∏µÈ±‚ == >>>>\n\n");
-		printf("¿Œ∫•∞˙ ∞∞¿Ã ƒ´µÂ¿« ¥Î«— ªÛºº¡§∫∏∏¶ ∞°¡ˆ∞Ì ¿÷¥¬ »®∆‰¿Ã¡ˆøÕ ∞∞¿Ã ªÁøÎ«ÿ¡÷ººø‰.\n\n");
-		printf("1. ≥™∏∏¿« µ¶ ∏∏µÈ±‚\n");
-		printf("2. ≥™∏∏¿« µ¶ ∫∏±‚\n");
-		printf("3. ≥™∏∏¿« µ¶ ªË¡¶\n");
-		printf("4. ƒ´µÂ ∞Àªˆ\n");
-		printf("5. ¡æ∑·\n:");
+		printf("<<<< == 하스스톤 나만의 덱 만들기 == >>>>\n\n");
+		printf("인벤과 같이 카드의 대한 정보를 많이가지고 있는 웹과 같이 사용하면 편리합니다.\n\n");
+		printf("1. 나만의 덱 만들기\n");
+		printf("2. 나만의 덱 보기\n");
+		printf("3. 나만의 덱 삭제\n");
+		printf("4. 카드 검색\n");
+		printf("5. 종료\n:");
 		scanf("%d", &i);
 		switch (i) {
 		case 1:makemydeck(); break;
