@@ -2,9 +2,9 @@
 #include<string.h>
 #include<Windows.h>
 #include"Cards.h"
-//ī�������� ����
-//���� ���給 txt���Ϸ� �����غ���
-typedef struct LinkedList {
+//ƒ´µÂªË¡¶±‚¥… ª¿‘
+//≥ª∞° ∏∏µÁµ¶ txt∆ƒ¿œ∑Œ ¿˙¿Â«ÿ∫∏±‚
+typedef struct LinkedList { //typedef는 별명을 선언해 주기위해 사용
 	char name[50];
 	int cost;
 	char kind[50];
@@ -13,38 +13,38 @@ typedef struct LinkedList {
 	char spell[50];
 	int num;
 	struct LinkedList *Next;
-}node;
+}node;//node라는 별명을 가지는 LinkedList구조체 선언
 
 struct card data[500];
 
-node *head, *tail;
+node *head, *tail; // node형 포인터 변수 head, tail 선언
 
-void reset() {
+void reset() { //메모리 상에서 따로놀고 있는 두 변수를 이어주는 과정 이 과정중 초기화됨
 	head = (node*)malloc(sizeof(node));
 	tail = (node*)malloc(sizeof(node));
 	head->Next = tail;
 	tail->Next = NULL;
 }
 
-void file() {
+void file() { //파일을 읽어오는 함수 , 같은폴더 내 card.txt라는 파일에서 데이터를 읽어옴
 	FILE *f;
-	f = fopen("card.txt", "r");
+	f = fopen("card.txt", "r");//파일을 읽어오기 권한으로 f 포인터 변수로 파일을 연다
 	for (int i = 0; i < 500; i++)
-		fscanf(f, "%s %d %s %s %s %s %s", data[i].name, &data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
-	fclose(f);
+		fscanf(f, "%s %d %s %s %s %s %s", data[i].name, &data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell); //띄어쓰기로 인덱스를 구별해 각각의 구조체배열에 넣어준다
+	fclose(f);//파일을 다 읽은 후에 열었던 파일을 닫는다
 }
 
-void mydeck() {
+void mydeck() { // 연결리스트 내에 생성한 노드들을 차례차례 읽어오는 함수다
 	system("cls");
 	int i = 1;
-	node *p = head->Next;
+	node *p = head->Next; //node형 포인터변수 p를 head다음에 있는 노드의 주소값을 저장한다
 	if (p == tail) {
-		printf("���� ������ ���� �����ϴ�.\n");
+		printf("æ∆¡˜ ª˝º∫µ» µ¶¿Ã æ¯Ω¿¥œ¥Ÿ.\n");
 		system("pause");
 		return;
 	}
-	while (p != tail) {
-		printf("%d. �̸� : %s   �ڽ�Ʈ : %d   ī����,���� : %s   ���� : %s   ��� : %s   ���� : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
+	while (p != tail) { //p를 읽어 올때마다 다음 노드의 주소값을 받아옴에 따라 p의 주소값이 tail의 주소값이 아닐때 까지 while문이 돌도록 설계했다
+		printf("%d. ¿Ã∏ß : %s   ƒ⁄Ω∫∆Æ : %d   ƒ´µÂ∆—,∏«Ë : %s   ¡˜æ˜ : %s   µÓ±ﬁ : %s   ¡æ∑˘ : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
 		p = p->Next;
 		i++;
 	}
@@ -52,32 +52,32 @@ void mydeck() {
 	system("pause");
 }
 
-void makemydeckprint() {
+void makemydeckprint() { // mydeck함수와 같은기능을 하지만 이 함수는 makemydeck함수에서 연결리스트에 노드를 추가할때마다 현재 추가된 카드들을 실시간으로 보여줄때 사용할 함수로 제작했다
 	system("cls");
 	int i = 1;
-	node *p = head->Next;
+	node *p = head->Next; //node형 포인터변수 p를 head다음에 있는 노드의 주소값을 저장한다
 
 	if (p == tail) {
-		printf("���� ������ ���� �����ϴ�!\n");
+		printf("æ∆¡˜ ª˝º∫µ» µ¶¿Ã æ¯Ω¿¥œ¥Ÿ!\n");
 		return;
 	}
 
 	while (p != tail) {
-		printf("%d. �̸� : %s   �ڽ�Ʈ : %d   ī����,���� : %s   ���� : %s   ��� : %s   ���� : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
+		printf("%d. ¿Ã∏ß : %s   ƒ⁄Ω∫∆Æ : %d   ƒ´µÂ∆—,∏«Ë : %s   ¡˜æ˜ : %s   µÓ±ﬁ : %s   ¡æ∑˘ : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
 		p = p->Next;
 		i++;
 	}
 	printf("\n");
 }
 
-void removedeck() {
+void removedeck() { //연결리스트 내의 존재하는 노드들중 input값에 입력된값과 비교해 이름이 input값과 같을경우 노드가 삭제되는 함수이다
 	system("cls");
 	char input[50];
 	int select;
-	printf("1. ī�� ���û���\n2. ī�� ��� ����\n:");
+	printf("1. ƒ´µÂ º±≈√ªË¡¶\n2. ƒ´µÂ ∏µŒ ªË¡¶\n:");
 	scanf("%d", &select);
-	if (select == 1) {
-		printf("������ ������ �����ϰ� ���� ī���� �̸��� �Է��ϼ��� : ");
+	if (select == 1) { //1번 옵션을 선택 할시에 리스트내의 노드를 골라 삭제할수 있다
+		printf("≥™∏∏¿« µ¶ø°º≠ ªË¡¶«œ∞Ì ΩÕ¿∫ ƒ´µÂ¿« ¿Ã∏ß¿ª ¿‘∑¬«œººø‰ : ");
 		scanf("%s", input);
 		node *p = head->Next;
 		node *o = head;
@@ -92,36 +92,37 @@ void removedeck() {
 			o = o->Next;
 		}
 	}
-	else if (select == 2) {
+	else if (select == 2) { //2번 함수를 실행할시 reset함수를 호출해 리스트를 초기화 시킨다
 		reset();
 	}
 	else {
-		printf("������ �ɼ��� �������� �ʽ��ϴ�. �ٽ��Է����ּ���.");
+		printf("º±≈√«— ø…º«¿∫ ¡∏¿Á«œ¡ˆ æ Ω¿¥œ¥Ÿ. ¥ŸΩ√¿‘∑¬«ÿ¡÷ººø‰.");
 	}
 }
 
-void makemydeck() {
+void makemydeck() { //구조체에서 입력한 값과 이름이 일치하는 카드를 불러와 링크드리스트내에 노드를 추가하는 함수이다.
 	system("cls");
 	while (1) {
 		char input[50];
-		node *NewDeck = (node*)malloc(sizeof(node));
-		node *p = head;
-		printf("�� ���� �߰� �� ī���̸��� �Է��ϼ���(����� '����'�� �Է��ϼ���) : ");
+		node *NewDeck = (node*)malloc(sizeof(node)); //node형 사이즈만큼 malloc함수로 동적할당을 해 Newdeck 포인터 변수안에 주소값을 저장한다
+		node *p = head; //p 변수에 head주소값을 저장ㅎ나다
+		printf("≥ª µ¶ø° √ﬂ∞° «“ ƒ´µÂ¿Ã∏ß¿ª ¿‘∑¬«œººø‰(¡æ∑·¥¬ '¡æ∑·'∏¶ ¿‘∑¬«œººø‰) : ");
 		scanf("%s", input);
-		while (p->Next != tail) {
-			p = p->Next;
-			if (strcmp(input, p->name) == 0) {
+		while (p->Next != tail) { //p의 인덱스 중 Next안의 주소값이 tail이 아닐때 까지 도는 while문이다.
+			p = p->Next; //p의 인덱스중 Next를 다음 p의 주소를 불러오는 과정이다
+			if (strcmp(input, p->name) == 0) { //이 과정을 돌면서 만약 p의 인덱스중 name의 값과 입력된값을 strcmp로 비교 했을때 0이 나올경우 p의 num인덱스에 1을 더한다.
 				if (p->num < 2) {
 					p->num++;
 					break;
 				}
-				else if (p->num == 2) {
-					printf("\n������ �ִ� ���� ī���� ������ 2�� �Դϴ�.\n�ٸ�ī�带 �־� �ּ���.\n\n");
+				else if (p->num == 2) { //만약 검색을 했는데 그 인덱스의 num이 2일경우 더이상 추가가 안된다고 출력해주고 반복문을 다시 호출한다.(실제 하스스톤 덱을 생성할때 동일카드를 3장 이상 추가할 수 없기 때문에 만든기능이다)
+					printf("\n≥÷¿ªºˆ ¿÷¥¬ µø¿œ ƒ´µÂ¿« ∞πºˆ¥¬ 2∞≥ ¿‘¥œ¥Ÿ.\n¥Ÿ∏•ƒ´µÂ∏¶ ≥÷æÓ ¡÷ººø‰.\n\n");
 					system("pause");
 					break;
 				}
 			}
 		}
+        // 노드 안에 구조체에서 찾아온 데이터를 넣는 과정이다
 		for (int i = 0; i < 500; i++) {
 			if (strcmp(input, data[i].name) == 0) {
 				strcpy(NewDeck->name, data[i].name);
@@ -134,29 +135,29 @@ void makemydeck() {
 				NewDeck->Next = tail;
 				p->Next = NewDeck;
 			}
-			else if (strcmp(input, "����") == 0)return;
+			else if (strcmp(input, "¡æ∑·") == 0)return; //종료를 입력하면 메인함수로 돌아가게끔 설정했다
 		}
-		makemydeckprint();
+		makemydeckprint(); //실시간으로 만든 덱을 보기위해 덱을 넣을때마다 호출되는 함수이다
 	}
 }
 
-void search() {
+void search() { // 구조체에서 카드이름을 검색해 카드의 상세정보를 보는 search함수이다. (연결리스트와는 연관되지 않은기능이다)
 	system("cls");
 	while (1) {
 		char input[50];
-		printf("ī�� �̸��� �Է��� �ּ��� : ");
+		printf("ƒ´µÂ ¿Ã∏ß¿ª ¿‘∑¬«ÿ ¡÷ººø‰ : ");
 		scanf("%s", input);
-		for (int i = 0; i < 500; i++) {
-			if (strcmp(data[i].name, input) == 0) {
-				printf("\n�̸� : %s\n�ڽ�Ʈ : %d\n���� : %s\n��� : %s\n���� : %s\nī�װ��� : %s\n���� : %s\n\n", data[i].name, data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
+		for (int i = 0; i < 500; i++) { //500장의 카드데이터를 보유하고 있기때문에 500까지 반복하며 검색한다
+			if (strcmp(data[i].name, input) == 0) { // 입력한 값과 for문이 돌며 찾은 구조체배열의 이름과 일치할경우 모든 데이터를 불러와 보여준다
+				printf("\n¿Ã∏ß : %s\nƒ⁄Ω∫∆Æ : %d\n¡˜æ˜ : %s\nµÓ±ﬁ : %s\n¡æ¡∑ : %s\nƒ´≈◊∞Ì∏Æ : %s\n¡æ∑˘ : %s\n\n", data[i].name, data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
 				system("pause");
 				return;
 			}
 		}
-		if (strcmp(input, "����") == 0) {
+		if (strcmp(input, "¡æ∑·") == 0) {
 			return;
 		}
-		printf("\n�˻������ �����ϴ�.\n�ٽ� �Է����ּ���.\n�˻������ '����'�� �Է��ϼ���\n\n");
+		printf("\n∞Àªˆ∞·∞˙∞° æ¯Ω¿¥œ¥Ÿ.\n¥ŸΩ√ ¿‘∑¬«ÿ¡÷ººø‰.\n∞Àªˆ¡æ∑·¥¬ '¡æ∑·'∏¶ ¿‘∑¬«œººø‰\n\n");
 		system("pause");
 		system("cls");
 	}
@@ -167,13 +168,13 @@ int main() {
 	file();
 	while (1) {
 		int i = 0;
-		printf("<<<< == �Ͻ����� ������ �� ����� == >>>>\n\n");
-		printf("�κ��� ���� ī���� ���� �������� ������ �ִ� Ȩ�������� ���� ������ּ���.\n\n");
-		printf("1. ������ �� �����\n");
-		printf("2. ������ �� ����\n");
-		printf("3. ������ �� ����\n");
-		printf("4. ī�� �˻�\n");
-		printf("5. ����\n:");
+		printf("<<<< == «œΩ∫Ω∫≈Ê ≥™∏∏¿« µ¶ ∏∏µÈ±‚ == >>>>\n\n");
+		printf("¿Œ∫•∞˙ ∞∞¿Ã ƒ´µÂ¿« ¥Î«— ªÛºº¡§∫∏∏¶ ∞°¡ˆ∞Ì ¿÷¥¬ »®∆‰¿Ã¡ˆøÕ ∞∞¿Ã ªÁøÎ«ÿ¡÷ººø‰.\n\n");
+		printf("1. ≥™∏∏¿« µ¶ ∏∏µÈ±‚\n");
+		printf("2. ≥™∏∏¿« µ¶ ∫∏±‚\n");
+		printf("3. ≥™∏∏¿« µ¶ ªË¡¶\n");
+		printf("4. ƒ´µÂ ∞Àªˆ\n");
+		printf("5. ¡æ∑·\n:");
 		scanf("%d", &i);
 		switch (i) {
 		case 1:makemydeck(); break;
