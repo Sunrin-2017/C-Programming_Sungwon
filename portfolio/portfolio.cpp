@@ -37,12 +37,12 @@ void mydeck() { // 연결리스트 내에 생성한 노드들을 차례차례 �
 	int i = 1;
 	node *p = head->Next; //node형 포인터변수 p를 head다음에 있는 노드의 주소값을 저장한다
 	if (p == tail) {
-		printf("æ∆¡˜ ª˝º∫µ» µ¶¿Ã æ¯Ω¿¥œ¥Ÿ.\n");
+		printf("현재 등록된 카드가 없습니다.\n");
 		system("pause");
 		return;
 	}
 	while (p != tail) { //p를 읽어 올때마다 다음 노드의 주소값을 받아옴에 따라 p의 주소값이 tail의 주소값이 아닐때 까지 while문이 돌도록 설계했다
-		printf("%d. ¿Ã∏ß : %s   ƒ⁄Ω∫∆Æ : %d   ƒ´µÂ∆—,∏«Ë : %s   ¡˜æ˜ : %s   µÓ±ﬁ : %s   ¡æ∑˘ : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
+		printf("%d. 이름 : %s   코스트 : %d   종류 : %s   직업 : %s   등급 : %s   주문 : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
 		p = p->Next;
 		i++;
 	}
@@ -56,12 +56,12 @@ void makemydeckprint() { // mydeck함수와 같은기능을 하지만 이 함수
 	node *p = head->Next; //node형 포인터변수 p를 head다음에 있는 노드의 주소값을 저장한다
 
 	if (p == tail) {
-		printf("æ∆¡˜ ª˝º∫µ» µ¶¿Ã æ¯Ω¿¥œ¥Ÿ!\n");
+		printf("현재 등록된 카드가 없습니다.\n");
 		return;
 	}
 
 	while (p != tail) {
-		printf("%d. ¿Ã∏ß : %s   ƒ⁄Ω∫∆Æ : %d   ƒ´µÂ∆—,∏«Ë : %s   ¡˜æ˜ : %s   µÓ±ﬁ : %s   ¡æ∑˘ : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
+		printf("%d. 이름 : %s   코스트 : %d   종류 : %s   직업 : %s   등급 : %s   주문 : %s\n", i, p->name, p->cost, p->kind, p->work, p->grade, p->spell);
 		p = p->Next;
 		i++;
 	}
@@ -72,10 +72,10 @@ void removedeck() { //연결리스트 내의 존재하는 노드들중 input값�
 	system("cls");
 	char input[50];
 	int select;
-	printf("1. ƒ´µÂ º±≈√ªË¡¶\n2. ƒ´µÂ ∏µŒ ªË¡¶\n:");
+	printf("1. 카드 개별 삭제\n2. 카드 전체 삭제\n:");
 	scanf("%d", &select);
 	if (select == 1) { //1번 옵션을 선택 할시에 리스트내의 노드를 골라 삭제할수 있다
-		printf("≥™∏∏¿« µ¶ø°º≠ ªË¡¶«œ∞Ì ΩÕ¿∫ ƒ´µÂ¿« ¿Ã∏ß¿ª ¿‘∑¬«œººø‰ : ");
+		printf("지울 카드를 입력해 주세요 : ");
 		scanf("%s", input);
 		node *p = head->Next;
 		node *o = head;
@@ -94,7 +94,7 @@ void removedeck() { //연결리스트 내의 존재하는 노드들중 input값�
 		reset();
 	}
 	else {
-		printf("º±≈√«— ø…º«¿∫ ¡∏¿Á«œ¡ˆ æ Ω¿¥œ¥Ÿ. ¥ŸΩ√¿‘∑¬«ÿ¡÷ººø‰.");
+		printf(".");
 	}
 }
 
@@ -104,7 +104,7 @@ void makemydeck() { //구조체에서 입력한 값과 이름이 일치하는 �
 		char input[50];
 		node *NewDeck = (node*)malloc(sizeof(node)); //node형 사이즈만큼 malloc함수로 동적할당을 해 Newdeck 포인터 변수안에 주소값을 저장한다
 		node *p = head; //p 변수에 head주소값을 저장ㅎ나다
-		printf("≥ª µ¶ø° √ﬂ∞° «“ ƒ´µÂ¿Ã∏ß¿ª ¿‘∑¬«œººø‰(¡æ∑·¥¬ '¡æ∑·'∏¶ ¿‘∑¬«œººø‰) : ");
+		printf("나만의 덱에 생성할 카드 이름을 입력해주세요.(종료는 '종료'를 입력해주세요) : ");
 		scanf("%s", input);
 		while (p->Next != tail) { //p의 인덱스 중 Next안의 주소값이 tail이 아닐때 까지 도는 while문이다.
 			p = p->Next; //p의 인덱스중 Next를 다음 p의 주소를 불러오는 과정이다
@@ -114,7 +114,7 @@ void makemydeck() { //구조체에서 입력한 값과 이름이 일치하는 �
 					break;
 				}
 				else if (p->num == 2) { //만약 검색을 했는데 그 인덱스의 num이 2일경우 더이상 추가가 안된다고 출력해주고 반복문을 다시 호출한다.(실제 하스스톤 덱을 생성할때 동일카드를 3장 이상 추가할 수 없기 때문에 만든기능이다)
-					printf("\n≥÷¿ªºˆ ¿÷¥¬ µø¿œ ƒ´µÂ¿« ∞πºˆ¥¬ 2∞≥ ¿‘¥œ¥Ÿ.\n¥Ÿ∏•ƒ´µÂ∏¶ ≥÷æÓ ¡÷ººø‰.\n\n");
+					printf("\n동일카드는 2장 까지 생성가능합니다. 다른카드를 선택해주세요.\n\n");
 					system("pause");
 					break;
 				}
@@ -133,7 +133,7 @@ void makemydeck() { //구조체에서 입력한 값과 이름이 일치하는 �
 				NewDeck->Next = tail;
 				p->Next = NewDeck;
 			}
-			else if (strcmp(input, "¡æ∑·") == 0)return; //종료를 입력하면 메인함수로 돌아가게끔 설정했다
+			else if (strcmp(input, "종료") == 0)return; //종료를 입력하면 메인함수로 돌아가게끔 설정했다
 		}
 		makemydeckprint(); //실시간으로 만든 덱을 보기위해 덱을 넣을때마다 호출되는 함수이다
 	}
@@ -143,19 +143,19 @@ void search() { // 구조체에서 카드이름을 검색해 카드의 상세정
 	system("cls");
 	while (1) {
 		char input[50];
-		printf("ƒ´µÂ ¿Ã∏ß¿ª ¿‘∑¬«ÿ ¡÷ººø‰ : ");
+		printf("검색할 카드이름을 입력해주세요(종료는 '종료'를 입력해주세요) : ");
 		scanf("%s", input);
 		for (int i = 0; i < 500; i++) { //500장의 카드데이터를 보유하고 있기때문에 500까지 반복하며 검색한다
 			if (strcmp(data[i].name, input) == 0) { // 입력한 값과 for문이 돌며 찾은 구조체배열의 이름과 일치할경우 모든 데이터를 불러와 보여준다
-				printf("\n¿Ã∏ß : %s\nƒ⁄Ω∫∆Æ : %d\n¡˜æ˜ : %s\nµÓ±ﬁ : %s\n¡æ¡∑ : %s\nƒ´≈◊∞Ì∏Æ : %s\n¡æ∑˘ : %s\n\n", data[i].name, data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
+				printf("\이름 : %s\n코스트 : %d\n직업 : %s\n등급 : %s\n종족 : %s\n카테고리 : %s\n주문 : %s\n\n", data[i].name, data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
 				system("pause");
 				return;
 			}
 		}
-		if (strcmp(input, "¡æ∑·") == 0) {
+		if (strcmp(input, "종료") == 0) {
 			return;
 		}
-		printf("\n∞Àªˆ∞·∞˙∞° æ¯Ω¿¥œ¥Ÿ.\n¥ŸΩ√ ¿‘∑¬«ÿ¡÷ººø‰.\n∞Àªˆ¡æ∑·¥¬ '¡æ∑·'∏¶ ¿‘∑¬«œººø‰\n\n");
+		printf("\n검색결과가 없습니다.\n다시 입력해주세요.\n\n");
 		system("pause");
 		system("cls");
 	}
