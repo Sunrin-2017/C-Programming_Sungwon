@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include<string.h>
-#include<Windows.h>
+#include <stdlib.h>
+#include <string.h>
 #include"Cards.h"
 typedef struct LinkedList { //typedef는 별명을 선언해 주기위해 사용
 	char name[50];
@@ -147,7 +147,7 @@ void search() { // 구조체에서 카드이름을 검색해 카드의 상세정
 		scanf("%s", input);
 		for (int i = 0; i < 500; i++) { //500장의 카드데이터를 보유하고 있기때문에 500까지 반복하며 검색한다
 			if (strcmp(data[i].name, input) == 0) { // 입력한 값과 for문이 돌며 찾은 구조체배열의 이름과 일치할경우 모든 데이터를 불러와 보여준다
-				printf("\이름 : %s\n코스트 : %d\n직업 : %s\n등급 : %s\n종족 : %s\n카테고리 : %s\n주문 : %s\n\n", data[i].name, data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
+				printf("이름 : %s\n코스트 : %d\n직업 : %s\n등급 : %s\n종족 : %s\n카테고리 : %s\n주문 : %s\n\n", data[i].name, data[i].cost, data[i].job, data[i].grade, data[i].tribe, data[i].category, data[i].spell);
 				system("pause");
 				return;
 			}
